@@ -59,6 +59,7 @@ toastr.options = {
         formulario.append("accion","listar");
         let valor = await fetch(ruta,{body:formulario ,method:"POST"}); 
         let json =await valor.json();
+        
         if(!valor.ok) throw{}
         else return json;        
 

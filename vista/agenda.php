@@ -1,6 +1,6 @@
 <?php 
-include_once "/xampp/htdocs/spectrum/Modelo/usuariosModel.php";
-$modelo = new usuariosModel;
+include_once "/xampp/htdocs/spectrum/Modelo/agendaModel.php";
+$modelo = new agendaModel;
 
 ?>
 <div class="card">
@@ -31,7 +31,7 @@ $modelo = new usuariosModel;
       <div class="row mt-1">
         <div class="col-md-12">            
                 <label for="Telefono">Descripción</label>                        
-                <input type="number" id="Descripcion" class="form-control"    name="Descripcion">        
+                <textarea  type="text" id="Descripcion" class="form-control"    name="Descripcion">    </textarea>    
         </div>        
       </div>
       <div class="row mt-1">
@@ -40,8 +40,8 @@ $modelo = new usuariosModel;
                 <input type="date" id="Fecha" class="form-control"    name="Fecha" data-requerido>        
         </div>
         <div class="col-md-6">      
-            <label for="Ciudad">Hora</label>                        
-            <select class="form-select" id="Hora" name="Hora" >
+            <label for="Ciudad">Hora <span style="color: red;"> *</span></label>                        
+            <select class="form-select" id="Hora" name="Hora"  data-requerido>
             <option value=""selected>Seleccione hora</option>
             <option value="9:00">9:00</option>
             <option value="10:00">10:00</option>
@@ -57,20 +57,20 @@ $modelo = new usuariosModel;
       <div class="row mt-1">
         <div class="col-md-6">            
                 <label for="password">Tecnico <span style="color: red;"> *</span></label>                        
-                <select class="form-select" id="Tecnico" name="Tecnico" >
+                <select class="form-select" id="Tecnico" name="Tecnico" data-requerido>
                 <option value=""selected>Seleccione un tecnico</option>
                     <?php                 
-                        $modelo->infoRol();
+                        $modelo->infoTecnico();
                     ?>            
                 </select>          
         </div>
         <div class="col-md-6">      
             <label for="Ciudad">Ingeniero <span style="color: red;"> *</span></label>   
             
-            <select class="form-select" id="Ingeniero" name="Ingeniero" >
+            <select class="form-select" id="Ingeniero" name="Ingeniero" data-requerido>
             <option value=""selected>Seleccione un ingeniero</option>
             <?php                 
-                $modelo->infoRol();
+                $modelo->infoIngeniero();
             ?>            
             </select>            
         </div>
@@ -78,41 +78,43 @@ $modelo = new usuariosModel;
       <div class="row mt-1">
         <div class="col-md-6">            
                 <label for="password">Cliente <span style="color: red;"> *</span></label>                        
-                <select class="form-select" id="Cliente" name="Cliente" >
+                <select class="form-select" id="Cliente" name="Cliente" data-requerido>
                 <option value=""selected>Seleccione un cliente</option>
                     <?php                 
-                        $modelo->infoRol();
+                        $modelo->infoCliente();
                     ?>            
                 </select>          
         </div>
         <div class="col-md-6">      
-            <label for="Ciudad">Regional<span style="color: red;"> *</span></label>   
+            <label for="Ciudad">Regional</label>   
             
             <select class="form-select" id="Regional" name="Regional" >
             <option value=""selected>Seleccione un regional</option>
             <?php                 
-                $modelo->infoRol();
+                $modelo->infoRegional();
             ?>            
             </select>            
         </div>
       </div>
       <div class="row mt-1">
         <div class="col-md-6">            
-                <label for="password">Subregional <span style="color: red;"> *</span></label>                        
-                <select class="form-select" id="Subregional" name="Subregional" >
-                <option value=""selected>Seleccione un subregional</option>
-                    <?php                 
-                        $modelo->infoRol();
-                    ?>            
+                <label for="password">Subregional </label>                        
+                <select class="form-select" id="Subregional" name="Subregional"  >
+                <option value=""selected>Seleccione primero regional</option>                              
                 </select>          
-        </div>
-        
-      </div>
+        </div>   
+        <div class="col-md-6">            
+              <label for="password">Digitador </label>                        
+              <select class="form-select" id="Digitador" name="Digitador" disabled>
+        <option value="<?= $valor[0]['id_usuario']?>"selected>
+        <?= $valor[0]['nombre_usuario']?>
+        </option>
+                               
+                </select>          
+        </div>      
+      </div>      
 
-      
-
-
-      <input type="hidden"  id="Id"  name="Id" > 
+      <input type="hidden"  id="Id"  name="Id" >             
                
     <div class="row mt-4" >                
         <div>
@@ -135,33 +137,30 @@ $modelo = new usuariosModel;
             <i class="fa-solid fa-up-down float-end" ></i>
                 Datos
             </div>
-        <div class="card-body collapse show"  id="datoscollapse"  >
-
-        
-
-
+        <div class="card-body collapse show"  id="datoscollapse"  >        
             <table  id="tbprincipal" class="table" >
             <div class="float-end" id="tblacciones">                        
-                <a href="../Reportes/usuariosReporte.php" class="btn btn-danger fa-solid fa-file-pdf float-end me-1" target="_blank"></a>
+                <a href="../Reportes/agendaReporte.php" class="btn btn-danger fa-solid fa-file-pdf float-end me-1" target="_blank"></a>
                 <!-- <i class="btn btn-success fa-solid fa-plus float-end me-1" ></i> -->
             </div>            
                 <thead>
                     <tr>
                     <th scope="col">Fase</th>
-                    <th scope="col">Tarea</th>
-                    <th scope="col">Descripción Tarea</th>
-                    <th scope="col">Telefono</th>
+                    <th scope="col">Digitador</th>
+                    <th scope="col">Tarea</th>                    
                     <th scope="col">Fecha</th>
                     <th scope="col">Hora</th>
                     <th scope="col">Tecnico</th>
+                    <th scope="col">Ingeniero</th>
                     <th scope="col">Cliente</th>
                     <th scope="col">Regional</th>
-                    <th scope="col">Subregional</th>
+                    <th  scope="col">SubRegional</th>                                        
+                    <th scope="col">Acciones</th>
                     </tr>
                 </thead>
-                <tbody id="tbusuarios">  
+                <tbody id="tbagenda">  
                     <tr>
-                        <td  colspan="6" style="text-align: center;">
+                        <td  colspan="10" style="text-align: center;">
                             <img  id="loada" width="310px" height="310px" src="..//Imagenes//load//cargando.gif" alt="">  
                         </td>
                     </tr>                                       

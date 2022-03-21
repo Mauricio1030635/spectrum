@@ -1,0 +1,1 @@
+<option value="<?=$valor["id"]?>"><?=$valor["nombre"]?></option>

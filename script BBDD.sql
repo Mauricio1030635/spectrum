@@ -91,6 +91,7 @@ create table usuario(
 create table agenda
 (
     id_agenda int AUTO_INCREMENT primary key,
+    id_usuario int,
     fase varchar(200) ,
     tarea varchar(200)  not null,
     descripcion_tarea varchar(200)  not null,
@@ -99,11 +100,14 @@ create table agenda
     id_tecnico int ,
     id_ingeniero int,
     id_cliente int ,    
-    id_subregional int,    
+    id_subregional int,
+    id_regional int,
+    FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario),
     FOREIGN KEY (id_tecnico) REFERENCES tecnico(id_tecnico),
     FOREIGN KEY (id_ingeniero) REFERENCES ingeniero(id_ingeniero),
     FOREIGN KEY (id_cliente) REFERENCES cliente(id_cliente),    
-    FOREIGN KEY (id_subregional) REFERENCES subregional(id_subregional)        
+    FOREIGN KEY (id_subregional) REFERENCES subregional(id_subregional),        
+    FOREIGN KEY (id_regional) REFERENCES regional(id_regional)        
 )
 
 
@@ -184,6 +188,7 @@ values (1,'EXITOSO
 insert into usuario values 
 (null,'Mauricio', 'Medina',null,null,null, 'MMS', '202cb962ac59075b964b07152d234b70', 1),
 (null,'Kevin', 'NN',null,null,null, 'Kevin1', '202cb962ac59075b964b07152d234b70', 1)
+
 
 
 
