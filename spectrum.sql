@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 21-03-2022 a las 19:05:54
+-- Tiempo de generación: 27-03-2022 a las 03:21:04
 -- Versión del servidor: 10.4.17-MariaDB
 -- Versión de PHP: 8.0.0
 
@@ -47,7 +47,11 @@ CREATE TABLE `agenda` (
 --
 
 INSERT INTO `agenda` (`id_agenda`, `id_usuario`, `fase`, `tarea`, `descripcion_tarea`, `fecha_agenda`, `hora_agenda`, `id_tecnico`, `id_ingeniero`, `id_cliente`, `id_regional`, `id_subregional`) VALUES
-(1, 1, '1', 'Revision aparato', 'revision del estado del equipo, reportan no conexion', '2022-03-15', '08:20:00', 1, 1, 1, 1, 1);
+(1, 1, '2', 'Revision aparato. ', 'revision del estado del equipo reportan no conexion. ', '2022-03-15', '9:00', 1, 1, 1, 1, 1),
+(2, 1, '1', 'eliminar', 'eliminar redes locales    ', '2022-03-26', '11:00', 1, 1, 1, 1, 1),
+(3, 1, '23', 'terrenos', 'arreglo plomeria    ', '2022-03-25', '14:00', 1, 1, 1, 2, 7),
+(5, 1, '25', 'consultar', 'consultar daños locales    ', '2022-03-23', '11:00', 1, 1, 1, 1, 4),
+(6, 1, '58', 'PRUEBA', 'PRUEBA    ', '2022-03-09', '11:00', 1, 1, 1, 2, 6);
 
 -- --------------------------------------------------------
 
@@ -66,7 +70,7 @@ CREATE TABLE `calidad` (
   `observacion_calidad` varchar(200) DEFAULT NULL,
   `novedad_puntualidad_terreno` varchar(200) DEFAULT NULL,
   `observacion_puntualidad_terreno` varchar(200) DEFAULT NULL,
-  `falta` tinyint(1) DEFAULT NULL,
+  `falta` varchar(250) DEFAULT NULL,
   `tipo_falta` varchar(100) DEFAULT NULL,
   `observaciones_faltas` varchar(200) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -76,7 +80,11 @@ CREATE TABLE `calidad` (
 --
 
 INSERT INTO `calidad` (`id_calidad`, `id_agenda`, `estado_final_actividad`, `observaciones`, `causal_puntualidad`, `estado`, `novedad`, `observacion_calidad`, `novedad_puntualidad_terreno`, `observacion_puntualidad_terreno`, `falta`, `tipo_falta`, `observaciones_faltas`) VALUES
-(1, 1, 'EXITOSO\r\n', 'PUNTUALIDAD 07 - EMPALMES FIBRA OPTICA; 01/06/2021 ; TÉCNICO: DILIER H. GRAJALES R.,  HORA VISITA: 09:00, HORA LLEGADA: 09:00, ATIENDE: CARLOS AVENDAÑO, CARGO: ADMINISTRADOR, TELEFONO: 3219367688\r\n', 'CONFIRMA CLIENTE\r\n', 'CUMPLIDA\r\n', NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+(1, 1, 'EXITOSO', 'PUNTUALIDAD 07 - EMPALMES FIBRA OPTICA; 01/06/2021 ; TÉCNICO: DILIER H. GRAJALES R.HORA VISITA: 09:00', ' HORA LLEGADA: 09:00', ' ATIENDE: CARLOS AVENDAÑO CARGO: ADMINISTRADOR TEL', 'CONFIRMA CLIENTE', 'CUMPLIDA', 'nada', 'Ninguna ', '-1', 'ninguna', 'nada'),
+(2, 2, 'pendiente', 'nada', 'nada', 'pendiente', 'nada', 'excelente', 'buena', 'nada', '', '', ''),
+(3, 3, '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11'),
+(5, 5, 'nada', 'nada', 'nada', 'nada', 'nada', 'nada', 'nada', 'nada', '', '', ''),
+(6, 6, 'PRUEBA', 'PRUEBA1', 'PRUEBA2', 'PRUEBA3', 'PRUEBA4', 'PRUEBA5', 'PRUEBA6', 'PRUEBA7', 'PRUEBA8', 'PRUEBA9', 'PRUEBA10');
 
 -- --------------------------------------------------------
 
@@ -189,16 +197,16 @@ INSERT INTO `subregional` (`id_subregional`, `id_regional`, `nombre_subregional`
 (3, 1, 'CORPORATIVO'),
 (4, 1, 'NORORIENTE'),
 (5, 1, 'NOROCCIDENTE'),
-(6, 2, 'NORTE'),
-(7, 2, 'SUR'),
-(8, 2, 'CORPORATIVO'),
-(9, 2, 'NORORIENTE'),
-(10, 2, 'NOROCCIDENTE'),
-(11, 3, 'NORTE'),
-(12, 3, 'SUR'),
-(13, 3, 'CORPORATIVO'),
-(14, 3, 'NORORIENTE'),
-(15, 3, 'NOROCCIDENTE');
+(6, 2, 'NORTE CALI'),
+(7, 2, 'SUR CALI'),
+(8, 2, 'CORPORATIVO CALI'),
+(9, 2, 'NORORIENTE CALI'),
+(10, 2, 'NOROCCIDENTE CALI'),
+(11, 3, 'NORTE MEDELLIN'),
+(12, 3, 'SUR MEDELLIN'),
+(13, 3, 'CORPORATIVO MEDELLIN'),
+(14, 3, 'NORORIENTE MEDELLIN'),
+(15, 3, 'NOROCCIDENTE MEDELLIN');
 
 -- --------------------------------------------------------
 
@@ -249,7 +257,7 @@ CREATE TABLE `usuario` (
 
 INSERT INTO `usuario` (`id_usuario`, `nombre_usuario`, `apellido_usuario`, `telefono_usuario`, `direccion_usuario`, `ciudad_usuario`, `usuario`, `passwordUsuario`, `id_rol`, `correo`) VALUES
 (1, 'Mauricio ', 'Medina', '3103303060', 'calle 69 sur', 'Bogota', 'MMS', '202cb962ac59075b964b07152d234b70', 1, 'mauricio@gmail.com'),
-(2, 'Kevin', 'NN', NULL, NULL, NULL, 'Kevin1', '202cb962ac59075b964b07152d234b70', 1, NULL),
+(2, 'Kevin', 'NN', '', 'Vacio', NULL, 'Kevin1', '202cb962ac59075b964b07152d234b70', 2, 'kevin@gmail.com'),
 (34, 'juan', 'Perez', '3054496454', 'calle 123', 'Bogota', 'juanPerez', '81dc9bdb52d04dc20036dbd8313ed055', 1, 'juan@juan.com'),
 (35, 'Andrea', 'lopez', '4856456', 'calle 25 sur', 'Cali', 'andy', '46902a89f290ec4bbf5e9b4223497d23', 1, 'json@gmail.com'),
 (36, 'Alex', 'Hernandez', '589458', 'carreara 24', 'Cali', 'Alex96', '202cb962ac59075b964b07152d234b70', 2, 'Alex@gmail.com');
@@ -329,13 +337,13 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `agenda`
 --
 ALTER TABLE `agenda`
-  MODIFY `id_agenda` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_agenda` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `calidad`
 --
 ALTER TABLE `calidad`
-  MODIFY `id_calidad` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_calidad` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `cliente`
