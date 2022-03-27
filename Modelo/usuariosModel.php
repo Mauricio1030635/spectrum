@@ -16,9 +16,7 @@
     }
   
     ///Agregar
-    public function agregar($usuario){
-        
-        
+    public function agregar($usuario){                
         try {
             $this->usuarios=$usuario;
             $query="insert into usuario (`nombre_usuario`,`apellido_usuario`,`telefono_usuario`,`direccion_usuario`,`ciudad_usuario`,`usuario`,`passwordUsuario`,`id_rol`,`correo`)
@@ -34,11 +32,7 @@
            
         } catch (Exception $e) {
             return 'Excepción capturada: '.  $e->getMessage(). "\n";
-        }
-       
-
-
-        
+        }               
     }  
 
     //modifcar

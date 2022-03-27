@@ -74,8 +74,8 @@ const modificar= async (ruta,formulario,accion )=>{
     try{                   
         formulario.append("accion",accion);
         let valor = await fetch(ruta,{body:formulario ,method:"POST"}); 
-        let json =await valor.json();
-        
+        let json =await valor.text();
+        console.log(json) ; 
         if(!valor.ok) throw{}
         else return json;        
         }

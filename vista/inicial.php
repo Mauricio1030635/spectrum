@@ -41,33 +41,32 @@ isset($_REQUEST["pagina"])?$accion=$_REQUEST["pagina"]:$accion="indicador";
                 <i class="fas fa-home"></i>Principal </a>     
             <a href="inicial.php?pagina=perfil" class="dashboard-nav-item"><i class="fas fa-user">                
             </i> Perfil </a> 
-            <div
-        <?php if( $valor[0]['id_rol']!=1){?> 
+            <div  >  
+            <div class='dashboard-nav-dropdown'
+            <?php if( $valor[0]['id_rol']!=1){?> 
             style="display: none;" 
             <?php }?>  
-        >  
-            <div class='dashboard-nav-dropdown'>
+            >
         <a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle">
         <i class="fas fa-photo-video"></i>Empleados</a>
         <div class='dashboard-nav-dropdown-menu'>
                 <a href="inicial.php?pagina=ingeniero" class="dashboard-nav-dropdown-item">Ingeniero</a>
                 <a  href="inicial.php?pagina=tecnico" class="dashboard-nav-dropdown-item">Tecnico</a>
         </div>
-        </div>
-        <div
-        <?php if( $valor[0]['id_rol']!=1){?> 
-            style="display: none;" 
-            <?php }?>  
-        >
+        </div>        
         <a href="inicial.php?pagina=agenda" class="dashboard-nav-item">
         <i class="fa-solid fa-calendar-plus"></i> Agenda 
         </a>
-        </div>
-
+        
+         <div 
+         <?php if( $valor[0]['id_rol']!=1){?> 
+            style="display: none;" 
+            <?php }?>
+         >
         <a href="inicial.php?pagina=usuarios" class="dashboard-nav-item">
         <i class="fa-solid fa-users"></i> Usuarios 
         </a>
-
+        </div>           
     </div>
           <div class="nav-item-divider"></div>
           <a href="inicial.php?pagina=salir" class="dashboard-nav-item">

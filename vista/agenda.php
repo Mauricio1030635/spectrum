@@ -105,7 +105,7 @@ $modelo = new agendaModel;
         </div>   
         <div class="col-md-6">            
               <label for="password">Digitador </label>                        
-              <select class="form-select" id="Digitador" name="Digitador" disabled>
+              <select class="form-select" id="Digitador" name="Digitador" >
         <option value="<?= $valor[0]['id_usuario']?>"selected>
         <?= $valor[0]['nombre_usuario']?>
         </option>
@@ -118,8 +118,9 @@ $modelo = new agendaModel;
                
     <div class="row mt-4" >                
         <div>
-            <button type="submit" class="btn btn-outline-primary float-end" id="Agregar">Agregar</button>
-            <button type="submit" class="btn btn-warning float-end ocultar" id="btnModificar">Modificar</button>
+            <button type="submit" class="btn btn-outline-primary float-end me-1" id="Agregar">Agregar</button>&nbsp;
+            <button type="submit" class="btn btn-warning float-end ocultar me-1" id="btnModificar">Modificar</button>  &nbsp;
+            <button type="button" class="btn btn-info float-end ocultar me-1" id="btnCalidad" data-bs-toggle="modal" data-bs-target="#exampleModal">Modulo de calidad</button> &nbsp; 
         </div>
           
     </div>
@@ -155,7 +156,8 @@ $modelo = new agendaModel;
                     <th scope="col">Cliente</th>
                     <th scope="col">Regional</th>
                     <th  scope="col">SubRegional</th>                                        
-                    <th scope="col">Acciones</th>
+                    <th 
+                    scope="col">Acciones</th>
                     </tr>
                 </thead>
                 <tbody id="tbagenda">  
@@ -169,4 +171,90 @@ $modelo = new agendaModel;
 
         </div>
     <!-- </div> -->
+
+    <!-- ***********************************modal calidad*********************** -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Agregar Informacion</h5>        
+      </div>
+      <div class="modal-body">
+    <form id="formcalidad" >
+        <div class="row mt-1">
+            <div class="col-md-6">            
+                    <label for="EstadoFinal">Estado final de la actividad</label>                        
+                    <input type="text" id="EstadoFinal" class="form-control" name="EstadoFinal">        
+            </div>
+            <div class="col-md-6">      
+                    <label for="Observaciones">Observaciones </label>            
+                    <input type="text" class="form-control"  id="Observaciones"  name="Observaciones" >              
+            </div>
+        </div>  
+        <div class="row mt-1">
+            <div class="col-md-6">            
+                    <label for="causalPuntualidad">Causal Puntualidad</label>                        
+                    <input type="text" id="causalPuntualidad" class="form-control" name="causalPuntualidad">        
+            </div>
+            <div class="col-md-6">      
+                    <label for="Estado">Estado</label>            
+                    <input type="text" class="form-control"  id="Estado"  name="Estado" >              
+            </div>
+        </div>  
+        <div class="row mt-1">          
+                <div class="col-md-6">      
+                        <label for="Novedad">Novedad </label>            
+                        <input type="text" class="form-control"  id="Novedad"  name="Novedad" >              
+                </div>
+                <div class="col-md-6">      
+                    <label for="ObservacionCalidad">Observacion Calidad </label>            
+                    <input type="text" class="form-control"  id="ObservacionCalidad"  name="ObservacionCalidad" >              
+            </div>
+            </div>           
+        <div class="row mt-1">
+            <div class="col-md-6">            
+                        <label for="NovedadPuntualidad">Novedad Puntualidad terreno</label>                        
+                        <input type="text" id="NovedadPuntualidad" class="form-control" name="NovedadPuntualidad">        
+                </div>
+                <div class="col-md-6">      
+                    <label for="ObservacionTerreno">Observacion Terreno </label>            
+                    <input type="text" class="form-control"  id="ObservacionTerreno"  name="ObservacionTerreno" >              
+            </div>
+            
+        </div>  
+        
+        <hr>
+        <div class="row mt-1">                    
+        </div>  
+        <div class="row mt-1">
+            <div class="col-md-6">            
+                    <label for="falta">falta</label>                        
+                    <input type="text" id="falta" class="form-control" name="falta">        
+            </div>            
+            <div class="col-md-6">            
+                    <label for="tipofalta">Tipo falta</label>                        
+                    <input type="text" id="tipofalta" class="form-control" name="tipofalta">        
+            </div>  
+        </div>  
+
+        <div class="row mt-1">
+            <div class="col-md-6">            
+                    <label for="Obsrvacionfalta">Observacion falta</label>                        
+                    <input type="text" id="Obsrvacionfalta" class="form-control" name="Obsrvacionfalta">        
+            </div>                         
+        </div> 
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
+        <button type="submit" id="btnGuardarCalidad" class="btn btn-primary">GUARDAR</button>
+      </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+    <!-- *********************************final modal calidad******************* -->
+
+
 </div>

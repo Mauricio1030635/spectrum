@@ -25,7 +25,7 @@ function Footer()
 }
 // Creación del objeto de la clase heredada
 $pdf = new PDF('L','mm','A3');
-$pdf->SetMargins(30,30,0);
+$pdf->SetMargins(20,20,0);
 $nada = new agendaModel;
 $json = $nada->listar();
 $principal=json_decode($json, true);
@@ -33,28 +33,30 @@ $pdf->AliasNbPages();
 $pdf->AddPage();
 $pdf->SetFont('Times','B',12);
 $pdf->Cell(10,10, "Fase" ,1,0,'C',0);
-$pdf->Cell(40,10, "Tarea" ,1,0,'C',0);
+$pdf->Cell(50,10, "Tarea" ,1,0,'C',0);
 $pdf->Cell(40,10, "Fecha" ,1,0,'C',0);
 $pdf->Cell(40,10,"Hora" ,1,0,'C',0);
 $pdf->Cell(40,10,"Tecnico" ,1,0,'C',0);
 $pdf->Cell(40,10, "Ingeniero" ,1,0,'C',0);
-$pdf->Cell(30,10, "Cliente" ,1,0,'C',0);
+$pdf->Cell(50,10, "Cliente" ,1,0,'C',0);
 $pdf->Cell(30,10, "Regional" ,1,0,'C',0);
-$pdf->Cell(30,10, "Subregional" ,1,0,'C',0);
-$pdf->Cell(30,10, "Digitador" ,1,1,'C',0);
+$pdf->Cell(50,10, "Subregional" ,1,0,'C',0);
+$pdf->Cell(40,10, "Digitador" ,1,1,'C',0);
 $pdf->SetFont('Times','',12);      
-$pdf->SetMargins(12,30,0); 
-for ($i = 0; $i < count($principal) ; $i++) {    
+
+
+for ($i = 0; $i < count($principal) ; $i++) {        
     $pdf->Cell(10,10, $principal[$i]['fase'],1,0,'C',0);
-    $pdf->Cell(40,10, $principal[$i]['tarea'],1,0,'C',0);    
+    $pdf->Cell(50,10, $principal[$i]['tarea'],1,0,'C',0);    
     $pdf->Cell(40,10, $principal[$i]['fecha_agenda'],1,0,'C',0);
     $pdf->Cell(40,10,  $principal[$i]['hora_agenda'],1,0,'C',0);        
     $pdf->Cell(40,10,  $principal[$i]['nombre_tecnico'] ." " .$principal[$i]['apellido_tecnico'],1,0,'C',0);        
     $pdf->Cell(40,10, $principal[$i]['nombre_ingeniero']." " .$principal[$i]['apellido_ingeniero'],1,0,'C',0);
-    $pdf->Cell(30,10, $principal[$i]['nombre_cliente']." " .$principal[$i]['apellido_cliente'],1,0,'C',0);
+    $pdf->Cell(50,10, $principal[$i]['nombre_cliente']." " .$principal[$i]['apellido_cliente'],1,0,'C',0);
     $pdf->Cell(30,10, $principal[$i]['nombre_regional']." " .$principal[$i]['apellido_regional'],1,0,'C',0);
-    $pdf->Cell(30,10, $principal[$i]['nombre_subregional'],1,0,'C',0);
-    $pdf->Cell(30,10, $principal[$i]['nombre_usuario'],1,1,'C',0);    
+    $pdf->Cell(50,10, $principal[$i]['nombre_subregional'],1,0,'C',0);
+    $pdf->Cell(40,10, $principal[$i]['nombre_usuario'],1,1,'C',0);   
+    
 }
 $pdf->Output();
 ?>
